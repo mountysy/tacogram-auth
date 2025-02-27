@@ -18,8 +18,17 @@
         </h4>
         <img src="<%= post["image"] %>" class="img-fluid w-full">
         <p><%= post["body"] %></p>
+       
+        <a href = "/comments/new?post_id=<%=post["id"]%>">Add comment</a>
+        
+        <% @comment = Comment.where({"post_id" => post["id"]}) %> 
+        
+        <% for comment in @comment %>
+          <%= comment["comment"] %>
+        <% end %>
       </div>
     <% end %>
+    
   </div>
 
 <% end %>
